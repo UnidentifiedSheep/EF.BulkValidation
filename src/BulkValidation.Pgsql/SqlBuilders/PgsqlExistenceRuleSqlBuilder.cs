@@ -21,7 +21,7 @@ public class PgsqlExistenceRuleSqlBuilder<TContext>(IMetadataResolver<TContext> 
         {
             KeyValueType.Single => BuildForSingle(kvp),
             KeyValueType.Tuple => BuildForTuple(kvp),
-            KeyValueType.MultipleKeys => BuildForMultipleKeys(kvp),
+            KeyValueType.MultipleKeys => BuildForMultipleKeys(kvp, rule.Quantifier),
             _ => throw new ArgumentOutOfRangeException()
         };
     }
@@ -95,7 +95,7 @@ public class PgsqlExistenceRuleSqlBuilder<TContext>(IMetadataResolver<TContext> 
         return new SqlCommand<NpgsqlParameter>(sql, columnName, parameters);
     }
 
-    private SqlCommand<NpgsqlParameter> BuildForMultipleKeys(RuleKeyValuePairBase kvp)
+    private SqlCommand<NpgsqlParameter> BuildForMultipleKeys(RuleKeyValuePairBase kvp, Quantifier quantifier)
     {
         var keySelector = (IHasKeySelector)kvp;
         var values = (IHasValues)kvp;
@@ -108,16 +108,29 @@ public class PgsqlExistenceRuleSqlBuilder<TContext>(IMetadataResolver<TContext> 
         var paramName = $"@p{sIndex}";
         var columnName = GetReturnColumnName(tableName, "manyFields", sharedCounter.GetNextInt());
         
-        var sql = $"""
-                   EXISTS (
-                    SELECT 1
-                    FROM "{schema}"."{tableName}"
-                    WHERE "{fieldName}" = ANY({paramName})
-                    LIMIT 1
-                   ) AS {columnName}
-                   """;
+        string sql = quantifier switch
+        {
+            Quantifier.Any => $"""
+                               EXISTS (
+                                   SELECT 1
+                                   FROM "{schema}"."{tableName}"
+                                   WHERE "{fieldName}" = ANY({paramName})
+                                   LIMIT 1
+                               ) AS {columnName}
+                               """,
 
-        var objs = values.Values.Select(x => x.Value).ToArray();
+            Quantifier.All => $"""
+                               (
+                                   SELECT COUNT(DISTINCT t."{fieldName}")
+                                   FROM "{schema}"."{tableName}" t
+                                   WHERE t."{fieldName}" = ANY({paramName})
+                               ) = cardinality({paramName}) AS {columnName}
+                               """,
+
+            _ => throw new NotSupportedException($"Quantifier {quantifier} is not supported")
+        };
+
+        var objs = values.Values.Select(x => x.Value).Distinct().ToArray();
         
         return new SqlCommand<NpgsqlParameter>(sql, columnName, CreateParameter(paramName, objs, keySelector.KeyType));
     }
