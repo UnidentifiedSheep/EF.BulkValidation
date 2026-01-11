@@ -1,0 +1,11 @@
+C:\Users\owl\RiderProjects\EF.BulkValidation\src\SourceGenerators\BulkValidation.SourceGeneration\BulkValidation.SourceGeneration\bin\Release\netstandard2.1\BulkValidation.SourceGeneration.deps.json
+C:\Users\owl\RiderProjects\EF.BulkValidation\src\SourceGenerators\BulkValidation.SourceGeneration\BulkValidation.SourceGeneration\bin\Release\netstandard2.1\BulkValidation.SourceGeneration.dll
+C:\Users\owl\RiderProjects\EF.BulkValidation\src\SourceGenerators\BulkValidation.SourceGeneration\BulkValidation.SourceGeneration\bin\Release\netstandard2.1\BulkValidation.SourceGeneration.pdb
+C:\Users\owl\RiderProjects\EF.BulkValidation\src\SourceGenerators\BulkValidation.SourceGeneration\BulkValidation.SourceGeneration\obj\Release\netstandard2.1\BulkValidation.SourceGeneration.csproj.AssemblyReference.cache
+C:\Users\owl\RiderProjects\EF.BulkValidation\src\SourceGenerators\BulkValidation.SourceGeneration\BulkValidation.SourceGeneration\obj\Release\netstandard2.1\BulkValidation.SourceGeneration.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\owl\RiderProjects\EF.BulkValidation\src\SourceGenerators\BulkValidation.SourceGeneration\BulkValidation.SourceGeneration\obj\Release\netstandard2.1\BulkValidation.SourceGeneration.AssemblyInfoInputs.cache
+C:\Users\owl\RiderProjects\EF.BulkValidation\src\SourceGenerators\BulkValidation.SourceGeneration\BulkValidation.SourceGeneration\obj\Release\netstandard2.1\BulkValidation.SourceGeneration.AssemblyInfo.cs
+C:\Users\owl\RiderProjects\EF.BulkValidation\src\SourceGenerators\BulkValidation.SourceGeneration\BulkValidation.SourceGeneration\obj\Release\netstandard2.1\BulkValidation.SourceGeneration.csproj.CoreCompileInputs.cache
+C:\Users\owl\RiderProjects\EF.BulkValidation\src\SourceGenerators\BulkValidation.SourceGeneration\BulkValidation.SourceGeneration\obj\Release\netstandard2.1\BulkValidation.SourceGeneration.sourcelink.json
+C:\Users\owl\RiderProjects\EF.BulkValidation\src\SourceGenerators\BulkValidation.SourceGeneration\BulkValidation.SourceGeneration\obj\Release\netstandard2.1\BulkValidation.SourceGeneration.dll
+C:\Users\owl\RiderProjects\EF.BulkValidation\src\SourceGenerators\BulkValidation.SourceGeneration\BulkValidation.SourceGeneration\obj\Release\netstandard2.1\BulkValidation.SourceGeneration.pdb

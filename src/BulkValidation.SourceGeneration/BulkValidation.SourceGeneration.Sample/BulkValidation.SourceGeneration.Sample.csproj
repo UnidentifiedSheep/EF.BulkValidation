@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <RootNamespace>BulkValidation.SourceGeneration.Sample</RootNamespace>
+        <EntitesProject>BulkValidation.SourceGeneration.Sample</EntitesProject>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\BulkValidation.SourceGeneration\BulkValidation.SourceGeneration.csproj" 
+                          OutputItemType="Analyzer" 
+                          ReferenceOutputAssembly="false"/>
+        <CompilerVisibleProperty Include="EntitesProject"/>
+    </ItemGroup>
+
+</Project>

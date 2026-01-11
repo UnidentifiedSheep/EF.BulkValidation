@@ -1,0 +1,12 @@
+C:\Users\owl\RiderProjects\EF.BulkValidation\src\BulkValidation.Core\bin\Debug\net10.0\BulkValidation.Core.deps.json
+C:\Users\owl\RiderProjects\EF.BulkValidation\src\BulkValidation.Core\bin\Debug\net10.0\BulkValidation.Core.dll
+C:\Users\owl\RiderProjects\EF.BulkValidation\src\BulkValidation.Core\bin\Debug\net10.0\BulkValidation.Core.pdb
+C:\Users\owl\RiderProjects\EF.BulkValidation\src\BulkValidation.Core\obj\Debug\net10.0\BulkValidation.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\owl\RiderProjects\EF.BulkValidation\src\BulkValidation.Core\obj\Debug\net10.0\BulkValidation.Core.AssemblyInfoInputs.cache
+C:\Users\owl\RiderProjects\EF.BulkValidation\src\BulkValidation.Core\obj\Debug\net10.0\BulkValidation.Core.AssemblyInfo.cs
+C:\Users\owl\RiderProjects\EF.BulkValidation\src\BulkValidation.Core\obj\Debug\net10.0\BulkValidation.Core.csproj.CoreCompileInputs.cache
+C:\Users\owl\RiderProjects\EF.BulkValidation\src\BulkValidation.Core\obj\Debug\net10.0\BulkValidation.Core.sourcelink.json
+C:\Users\owl\RiderProjects\EF.BulkValidation\src\BulkValidation.Core\obj\Debug\net10.0\BulkValidation.Core.dll
+C:\Users\owl\RiderProjects\EF.BulkValidation\src\BulkValidation.Core\obj\Debug\net10.0\refint\BulkValidation.Core.dll
+C:\Users\owl\RiderProjects\EF.BulkValidation\src\BulkValidation.Core\obj\Debug\net10.0\BulkValidation.Core.pdb
+C:\Users\owl\RiderProjects\EF.BulkValidation\src\BulkValidation.Core\obj\Debug\net10.0\ref\BulkValidation.Core.dll

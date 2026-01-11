@@ -1,0 +1,12 @@
+C:\Users\owl\RiderProjects\EF.BulkValidation\src\SourceGenerators\BulkValidation.SourceGeneration\BulkValidation.SourceGeneration.Sample\bin\Release\net9.0\BulkValidation.SourceGeneration.Sample.deps.json
+C:\Users\owl\RiderProjects\EF.BulkValidation\src\SourceGenerators\BulkValidation.SourceGeneration\BulkValidation.SourceGeneration.Sample\bin\Release\net9.0\BulkValidation.SourceGeneration.Sample.dll
+C:\Users\owl\RiderProjects\EF.BulkValidation\src\SourceGenerators\BulkValidation.SourceGeneration\BulkValidation.SourceGeneration.Sample\bin\Release\net9.0\BulkValidation.SourceGeneration.Sample.pdb
+C:\Users\owl\RiderProjects\EF.BulkValidation\src\SourceGenerators\BulkValidation.SourceGeneration\BulkValidation.SourceGeneration.Sample\obj\Release\net9.0\BulkValidation.SourceGeneration.Sample.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\owl\RiderProjects\EF.BulkValidation\src\SourceGenerators\BulkValidation.SourceGeneration\BulkValidation.SourceGeneration.Sample\obj\Release\net9.0\BulkValidation.SourceGeneration.Sample.AssemblyInfoInputs.cache
+C:\Users\owl\RiderProjects\EF.BulkValidation\src\SourceGenerators\BulkValidation.SourceGeneration\BulkValidation.SourceGeneration.Sample\obj\Release\net9.0\BulkValidation.SourceGeneration.Sample.AssemblyInfo.cs
+C:\Users\owl\RiderProjects\EF.BulkValidation\src\SourceGenerators\BulkValidation.SourceGeneration\BulkValidation.SourceGeneration.Sample\obj\Release\net9.0\BulkValidation.SourceGeneration.Sample.csproj.CoreCompileInputs.cache
+C:\Users\owl\RiderProjects\EF.BulkValidation\src\SourceGenerators\BulkValidation.SourceGeneration\BulkValidation.SourceGeneration.Sample\obj\Release\net9.0\BulkValidation.SourceGeneration.Sample.sourcelink.json
+C:\Users\owl\RiderProjects\EF.BulkValidation\src\SourceGenerators\BulkValidation.SourceGeneration\BulkValidation.SourceGeneration.Sample\obj\Release\net9.0\BulkValidation.SourceGeneration.Sample.dll
+C:\Users\owl\RiderProjects\EF.BulkValidation\src\SourceGenerators\BulkValidation.SourceGeneration\BulkValidation.SourceGeneration.Sample\obj\Release\net9.0\refint\BulkValidation.SourceGeneration.Sample.dll
+C:\Users\owl\RiderProjects\EF.BulkValidation\src\SourceGenerators\BulkValidation.SourceGeneration\BulkValidation.SourceGeneration.Sample\obj\Release\net9.0\BulkValidation.SourceGeneration.Sample.pdb
+C:\Users\owl\RiderProjects\EF.BulkValidation\src\SourceGenerators\BulkValidation.SourceGeneration\BulkValidation.SourceGeneration.Sample\obj\Release\net9.0\ref\BulkValidation.SourceGeneration.Sample.dll
