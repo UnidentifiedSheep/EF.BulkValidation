@@ -52,13 +52,22 @@ public class ExistenceBenchmark
 
         foreach (var value in _randomGuids)
             _ = await _context.RandomData.AsNoTracking().AnyAsync(x => x.Guid == value);
-        
-        _ = await _context.RandomData.AsNoTracking().AnyAsync(x => x.First == 9899999 && x.Second == 9899999);
     }
 
     [Benchmark]
     public async Task BatchExistenceRequest()
     {
+        var plan = new ValidationPlan();
         
+        foreach (var value in _randomInts)
+            plan.ValidateRandomDatumExistsFirst(value);
+
+        foreach (var value in _randomInts)
+            plan.ValidateRandomDatumExistsSecond(value);
+        
+        foreach (var value in _randomGuids)
+            plan.ValidateRandomDatumExistsGuid(value);
+        
+        await _dbValidator.Validate(plan);
     }
 }

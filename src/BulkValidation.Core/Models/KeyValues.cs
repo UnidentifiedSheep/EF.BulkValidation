@@ -48,7 +48,7 @@ public sealed class KeyValues<TEntity, TKey> : RuleKeyValuePairBase<TEntity>, IH
         return Values.Select(v => new TypedObject(v, KeyType)).ToArray();
     }
 
-    public void WithValue(TKey[] values)
+    public void WithValue(params TKey[] values)
     {
         if (values.Length == 0)
             throw new ArgumentException("Value cannot be empty for multiple keys.");
