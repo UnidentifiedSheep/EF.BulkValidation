@@ -39,4 +39,4 @@ jobs:
       run: dotnet build EF.BulkValidation.sln --no-restore
 
     - name: Test
-      run: dotnet test ECommerceSpareParts.sln --no-build --verbosity normal
+      run: dotnet test EF.BulkValidation.sln --no-build --verbosity normal
