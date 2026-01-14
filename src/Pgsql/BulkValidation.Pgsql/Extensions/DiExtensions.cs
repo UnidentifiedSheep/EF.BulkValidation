@@ -46,9 +46,7 @@ public static class DiExtensions
             var builderTypes = assembly
                 .GetTypes()
                 .Where(t => !t.IsAbstract
-                            && !t.IsInterface
-                            && t.BaseType is not null
-                            && t.BaseType.IsGenericType
+                            && t is { IsInterface: false, BaseType.IsGenericType: true }
                             && t.BaseType.GetGenericTypeDefinition() == typeof(PgsqlRuleSqlBuilderBase<>))
                 .ToList();
 
