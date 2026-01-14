@@ -21,11 +21,10 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\BulkValidation.Core\BulkValidation.Core.csproj" />
-      <ProjectReference Include="..\BulkValidation.Pgsql\BulkValidation.Pgsql.csproj" />
-        <ProjectReference Include="..\BulkValidation.SourceGeneration\BulkValidation.SourceGeneration\BulkValidation.SourceGeneration.csproj"
+        <ProjectReference Include="..\..\BulkValidation.SourceGeneration\BulkValidation.SourceGeneration\BulkValidation.SourceGeneration.csproj"
                           OutputItemType="Analyzer"
                           ReferenceOutputAssembly="false"/>
+        <ProjectReference Include="..\BulkValidation.Pgsql\BulkValidation.Pgsql.csproj" />
     </ItemGroup>
 
 </Project>

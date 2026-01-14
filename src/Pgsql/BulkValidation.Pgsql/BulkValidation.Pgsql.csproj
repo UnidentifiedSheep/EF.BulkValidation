@@ -11,8 +11,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\BulkValidation.Base\BulkValidation.Base.csproj" />
-      <ProjectReference Include="..\BulkValidation.Core\BulkValidation.Core.csproj" />
+      <ProjectReference Include="..\..\BulkValidation.Base\BulkValidation.Base.csproj" />
+      <ProjectReference Include="..\..\BulkValidation.Core\BulkValidation.Core.csproj" />
     </ItemGroup>
 
 </Project>

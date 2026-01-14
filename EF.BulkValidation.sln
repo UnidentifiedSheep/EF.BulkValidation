@@ -2,10 +2,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BulkValidation.Core", "src\BulkValidation.Core\BulkValidation.Core.csproj", "{24788CA9-4DF5-4F46-BBC3-E58F6B580EC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BulkValidation.Pgsql", "src\BulkValidation.Pgsql\BulkValidation.Pgsql.csproj", "{A4F12841-742A-4E76-8895-B5A42F5F459F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BulkValidation.Pgsql.Benchmarks", "src\BulkValidation.Pgsql.Benchmarks\BulkValidation.Pgsql.Benchmarks.csproj", "{D18DA862-120E-46B5-930F-3BB38795A3E1}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BulkValidation.Base", "src\BulkValidation.Base\BulkValidation.Base.csproj", "{3239CE02-B42B-48C8-974F-5DB0F2115AE0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SourceGenerators", "SourceGenerators", "{554D512B-C8F7-43CC-AF2F-AE20436AA385}"
@@ -15,6 +11,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BulkValidation.SourceGeneration.Tests", "src\BulkValidation.SourceGeneration\BulkValidation.SourceGeneration.Tests\BulkValidation.SourceGeneration.Tests.csproj", "{E5649759-175A-46E4-B559-41CE43B42E80}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BulkValidation.SourceGeneration.Sample", "src\BulkValidation.SourceGeneration\BulkValidation.SourceGeneration.Sample\BulkValidation.SourceGeneration.Sample.csproj", "{01579DA4-1199-4DC3-A161-08822AE39C11}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pgsql", "Pgsql", "{3372AD3E-4A44-4CC7-A23B-BD1C5E46C127}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BulkValidation.Pgsql", "src\Pgsql\BulkValidation.Pgsql\BulkValidation.Pgsql.csproj", "{08D8C954-43B2-4427-8493-D9C0D9285F26}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BulkValidation.Pgsql.Benchmarks", "src\Pgsql\BulkValidation.Pgsql.Benchmarks\BulkValidation.Pgsql.Benchmarks.csproj", "{5727F029-2F12-4504-906F-CC8BBF01509C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,14 +28,6 @@ Global
 		{24788CA9-4DF5-4F46-BBC3-E58F6B580EC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24788CA9-4DF5-4F46-BBC3-E58F6B580EC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24788CA9-4DF5-4F46-BBC3-E58F6B580EC8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A4F12841-742A-4E76-8895-B5A42F5F459F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A4F12841-742A-4E76-8895-B5A42F5F459F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A4F12841-742A-4E76-8895-B5A42F5F459F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A4F12841-742A-4E76-8895-B5A42F5F459F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D18DA862-120E-46B5-930F-3BB38795A3E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D18DA862-120E-46B5-930F-3BB38795A3E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D18DA862-120E-46B5-930F-3BB38795A3E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D18DA862-120E-46B5-930F-3BB38795A3E1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3239CE02-B42B-48C8-974F-5DB0F2115AE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3239CE02-B42B-48C8-974F-5DB0F2115AE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3239CE02-B42B-48C8-974F-5DB0F2115AE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -50,10 +44,20 @@ Global
 		{01579DA4-1199-4DC3-A161-08822AE39C11}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01579DA4-1199-4DC3-A161-08822AE39C11}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{01579DA4-1199-4DC3-A161-08822AE39C11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08D8C954-43B2-4427-8493-D9C0D9285F26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08D8C954-43B2-4427-8493-D9C0D9285F26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08D8C954-43B2-4427-8493-D9C0D9285F26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08D8C954-43B2-4427-8493-D9C0D9285F26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5727F029-2F12-4504-906F-CC8BBF01509C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5727F029-2F12-4504-906F-CC8BBF01509C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5727F029-2F12-4504-906F-CC8BBF01509C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5727F029-2F12-4504-906F-CC8BBF01509C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{F31220E5-253E-4337-8701-2D005C69B3FC} = {554D512B-C8F7-43CC-AF2F-AE20436AA385}
 		{E5649759-175A-46E4-B559-41CE43B42E80} = {554D512B-C8F7-43CC-AF2F-AE20436AA385}
 		{01579DA4-1199-4DC3-A161-08822AE39C11} = {554D512B-C8F7-43CC-AF2F-AE20436AA385}
+		{08D8C954-43B2-4427-8493-D9C0D9285F26} = {3372AD3E-4A44-4CC7-A23B-BD1C5E46C127}
+		{5727F029-2F12-4504-906F-CC8BBF01509C} = {3372AD3E-4A44-4CC7-A23B-BD1C5E46C127}
 	EndGlobalSection
 EndGlobal
