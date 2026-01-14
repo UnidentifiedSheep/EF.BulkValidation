@@ -2,7 +2,6 @@
 using BulkValidation.Core.Models;
 using BulkValidation.Core.Plan;
 using BulkValidation.Pgsql.Benchmarks.Contexts;
-using BulkValidation.Pgsql.Benchmarks.Entities;
 using BulkValidation.Pgsql.DbValidators;
 using BulkValidation.Pgsql.Executors;
 using BulkValidation.Pgsql.Factories;

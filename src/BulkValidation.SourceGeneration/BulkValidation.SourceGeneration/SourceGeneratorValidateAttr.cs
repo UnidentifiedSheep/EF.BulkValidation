@@ -1,5 +1,7 @@
 ﻿using System.Collections.Immutable;
+using System.Linq;
 using System.Text;
+using BulkValidation.SourceGeneration.Models;
 using BulkValidation.SourceGeneration.Static;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -7,11 +9,14 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 namespace BulkValidation.SourceGeneration;
 
 [Generator]
-public class SourceGeneratorValidationPlanShortCut : IIncrementalGenerator
+public class SourceGeneratorValidateAttr : IIncrementalGenerator
 {
     //Depends on ExistenceRule
-    private readonly ImmutableArray<(string @namespace, string shortcut)> _baseRules =
-        ImmutableArray.Create(("BulkValidation.Core.Rules.ExistenceRule", "Exists"));
+    private readonly ImmutableArray<(string @namespace, string shortcut, ArgumentMetadata[] additionalArgs)> _baseRules =
+        ImmutableArray.Create(("BulkValidation.Core.Rules.ExistenceRule", "Exists", new []
+        {
+            new ArgumentMetadata("BulkValidation.Core.Enums.Quantifier", "quantifier", "BulkValidation.Core.Enums.Quantifier.Any")
+        }));
     
     public void Initialize(IncrementalGeneratorInitializationContext context)
     {
@@ -19,15 +24,10 @@ public class SourceGeneratorValidationPlanShortCut : IIncrementalGenerator
             .Select((provider, _) =>
             {
                 provider.GlobalOptions
-                    .TryGetValue("build_property.EntitesProject".ToLowerInvariant(), 
-                        out var entitiesProject);
-
-                provider.GlobalOptions
                     .TryGetValue("build_property.RootNamespace".ToLowerInvariant(), 
                         out var rootNamespace);
-
                 
-                return (entitiesProject, rootNamespace!);
+                return rootNamespace!;
             });
 
         var propWithValidateAttr = GetPropertiesWithValidateAttribute(context)
@@ -37,7 +37,7 @@ public class SourceGeneratorValidationPlanShortCut : IIncrementalGenerator
     }
 
     private void GenForValidate(SourceProductionContext context, 
-        (ImmutableArray<IPropertySymbol?> left, (string? entitiesProject, string) right) tuple)
+        (ImmutableArray<IPropertySymbol?> left, string right) tuple)
     {
         var (properties, rootNamespace) = tuple;
 
@@ -52,7 +52,7 @@ public class SourceGeneratorValidationPlanShortCut : IIncrementalGenerator
                         using BulkValidation.Core.Models;
                         using BulkValidation.Core.Interfaces;
 
-                        namespace {{rootNamespace.Item2}}
+                        namespace {{rootNamespace}}
                         {
                             public static partial class ValidationPlanShortCutsForValidate
                             {
@@ -74,10 +74,17 @@ public class SourceGeneratorValidationPlanShortCut : IIncrementalGenerator
             {
                 var kv = RuleKeyValue.GenerateKeyValue(entitySymbol, propertySymbol, "keyValue");
                 var kvs = RuleKeyValue.GenerateKeyValues(entitySymbol, propertySymbol, "keyValues");
+                var additionalArgs = string.Join(", ", rule.additionalArgs.Select(x => 
+                {
+                    var i = x.DefaultValue == null ? "" : $" = {x.DefaultValue}";
+                    return $"{x.Type} {x.Name} {i}"; 
+                }));
+                if (!string.IsNullOrWhiteSpace(additionalArgs))
+                    additionalArgs = ", " + additionalArgs;
                 
                 sb.AppendLine($$"""
                                 public static IValidationPlan Validate{{shortClassName}}{{rule.shortcut}}{{shortPropertyName}}(
-                                    this IValidationPlan plan, {{keyTypeStr}} value)
+                                    this IValidationPlan plan, {{keyTypeStr}} value {{additionalArgs}})
                                 {
                                     {{kv}}
                                     keyValue.WithValue(value);
@@ -87,7 +94,7 @@ public class SourceGeneratorValidationPlanShortCut : IIncrementalGenerator
                                 """);
                 sb.AppendLine($$"""
                                 public static IValidationPlan Validate{{shortClassName}}{{rule.shortcut}}{{shortPropertyName}}(
-                                    this IValidationPlan plan, params {{keyTypeStr}}[] values)
+                                    this IValidationPlan plan{{additionalArgs}}, params {{keyTypeStr}}[] values)
                                 {
                                     {{kvs}}
                                     keyValues.WithValue(values);
@@ -111,10 +118,5 @@ public class SourceGeneratorValidationPlanShortCut : IIncrementalGenerator
                 (ctx, _) => ctx.TargetSymbol as IPropertySymbol)
             .Where(x => x != null)
             .Collect();
-    }
-
-    public void GetProjectEntities(PropertyDeclarationSyntax propertyDeclarationSyntax)
-    {
-        
     }
 }
