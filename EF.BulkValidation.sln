@@ -18,7 +18,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BulkValidation.Pgsql", "src
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BulkValidation.Pgsql.Benchmarks", "src\Pgsql\BulkValidation.Pgsql.Benchmarks\BulkValidation.Pgsql.Benchmarks.csproj", "{5727F029-2F12-4504-906F-CC8BBF01509C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BulkValidation.Pgsql.Tests", "src\Pgsql\BulkValidation.Pgsql.Tests\BulkValidation.Pgsql.Tests.csproj", "{D924A8AF-931D-40DC-B589-460736291E3A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BulkValidation.Pgsql.UnitTests", "src\Pgsql\BulkValidation.Pgsql.UnitTests\BulkValidation.Pgsql.UnitTests.csproj", "{D924A8AF-931D-40DC-B589-460736291E3A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

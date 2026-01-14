@@ -54,7 +54,7 @@ public abstract class PgsqlRuleSqlBuilderBase<TRule> : RuleSqlBuilderBase<TRule,
     protected Array ConvertToTypedArray(object?[] keys, Type elementType)
     {
         if (keys.Any(k => k is null) && elementType.IsValueType)
-            throw new InvalidOperationException(
+            throw new InvalidOperationException( 
                 $"Null values are not allowed for value type array '{elementType.Name}'.");
 
         if (elementType.IsEnum)
