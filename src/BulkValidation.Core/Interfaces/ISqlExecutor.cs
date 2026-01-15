@@ -5,6 +5,9 @@ namespace BulkValidation.Core.Interfaces;
 
 public interface ISqlExecutor<TParameter> where TParameter : DbParameter
 {
-    Task<ExecutorResult[]> Execute(IEnumerable<SqlCommand<TParameter>> sqlCommands,
+    Task<ExecutorResult<object>[]> Execute(IEnumerable<SqlCommand<TParameter>> sqlCommands,
+        CancellationToken cancellationToken = default);
+    
+    Task<ExecutorResult<TValue>[]> Execute<TValue>(IEnumerable<SqlCommand<TParameter>> sqlCommands,
         CancellationToken cancellationToken = default);
 }

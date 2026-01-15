@@ -1,10 +1,11 @@
 ﻿using System.Data.Common;
 using BulkValidation.Core.Interfaces;
+using BulkValidation.Core.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace BulkValidation.Base.Interfaces;
 
 public interface IDbValidator<TContext, TParameter> where TContext : DbContext where TParameter : DbParameter
 {
-    Task Validate(IValidationPlan plan, CancellationToken cancellationToken = default);
+    Task<IEnumerable<ValidationResult>> Validate(IValidationPlan plan, bool throwOnError = true, CancellationToken cancellationToken = default);
 }

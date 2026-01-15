@@ -16,7 +16,7 @@ public class ExistenceRule<TEntity> : ExistenceRule
     }
 }
 
-public abstract class ExistenceRule(RuleKeyValuePairBase kvp) : BaseRule(kvp)
+public abstract class ExistenceRule(RuleKeyValuePairBase kvp) : BaseRule(kvp, "Entity with such key/s not found.")
 {
     public override Type RuleType => typeof(ExistenceRule);
     /// <summary>

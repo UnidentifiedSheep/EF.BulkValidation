@@ -11,12 +11,12 @@ namespace BulkValidation.Pgsql.Executors;
 public class PgsqlSqlExecutor<TContext>(TContext context, CombinedSqlBuilderBase<NpgsqlParameter> sqlBuilder) 
     : SqlExecutorBase<TContext>(context), ISqlExecutor<NpgsqlParameter> where TContext : DbContext
 {
-    public async Task<ExecutorResult[]> Execute(IEnumerable<SqlCommand<NpgsqlParameter>> sqlCommands, 
+    public async Task<ExecutorResult<object>[]> Execute(IEnumerable<SqlCommand<NpgsqlParameter>> sqlCommands, 
         CancellationToken cancellationToken = default)
     {
         var commands = sqlCommands.ToList();
         var sql = sqlBuilder.BuildSql(commands);
-        var results = new ExecutorResult[commands.Count];
+        var results = new ExecutorResult<object>[commands.Count];
         await using ConnectionScope connectionScope = await OpenConnectionScope(cancellationToken);
         
         await using var command = CreateCommand(connectionScope.Connection, sql, commands.SelectMany(c => c.Parameters));
@@ -31,8 +31,14 @@ public class PgsqlSqlExecutor<TContext>(TContext context, CombinedSqlBuilderBase
         {
             var colName = reader.GetName(i);
             var value = reader.GetValue(i);
-            results[i] = new ExecutorResult(colName, value);
+            results[i] = new ExecutorResult<object>(colName, value);
         }
         return results;
+    }
+
+    public async Task<ExecutorResult<TValue>[]> Execute<TValue>(IEnumerable<SqlCommand<NpgsqlParameter>> sqlCommands, CancellationToken cancellationToken = default)
+    {
+        var executionResults = await Execute(sqlCommands, cancellationToken);
+        return executionResults.Select(x => new ExecutorResult<TValue>(x.ColumnName, (TValue)x.Value)).ToArray();
     }
 }

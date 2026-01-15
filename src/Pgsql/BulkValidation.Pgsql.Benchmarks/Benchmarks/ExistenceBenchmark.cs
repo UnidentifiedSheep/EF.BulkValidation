@@ -67,6 +67,6 @@ public class ExistenceBenchmark
         foreach (var value in _randomGuids)
             plan.ValidateRandomDatumExistsGuid(value);
         
-        await _dbValidator.Validate(plan);
+        await _dbValidator.Validate(plan, false);
     }
 }

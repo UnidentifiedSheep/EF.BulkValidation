@@ -1,3 +1,3 @@
 ﻿namespace BulkValidation.Core.Models;
 
-public record ExecutorResult(string ColumnName, object Value);
+public record ExecutorResult<TValue>(string ColumnName, TValue Value);
