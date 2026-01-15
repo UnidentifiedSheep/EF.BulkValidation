@@ -1,5 +1,8 @@
 ﻿# EF.BulkValidation
 
+**PostgreSQL:** [![NuGet](https://img.shields.io/nuget/v/BulkValidation.Pgsql.svg)](https://www.nuget.org/packages/BulkValidation.Pgsql/)
+
+
 A library for efficient batch data validation in Entity Framework Core. Combine validations (e.g., for database record existence) into a single SQL query, which will significantly reduce the number of database calls.
 
 ## Key features
@@ -14,7 +17,7 @@ A library for efficient batch data validation in Entity Framework Core. Combine 
 Install the NuGet package:
 
 ```bash
-dotnet add package ???
+dotnet add package BulkValidation.Pgsql
 ```
 
 Register the DbValidator in your DI container (as generic type parameter provide your DbContext):

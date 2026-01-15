@@ -5,11 +5,11 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
 
-        <PackageId>EF.BuilkValidation.Core</PackageId>
+        <PackageId>BulkValidation.Core</PackageId>
         <Version>1.0.0</Version>
         <Authors>Diyar Tashliyan</Authors>
-        <Description>
-            Batch data validation for Entity Framework Core with single-query execution and a typed API generated via Source Generators.
+        <Description>Batch data validation for Entity Framework Core with single-query execution and a typed API generated via Source Generators.
+For full documentation, see the README on GitHub: https://github.com/UnidentifiedSheep/EF.BulkValidation
         </Description>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageProjectUrl>https://github.com/UnidentifiedSheep/EF.BulkValidation</PackageProjectUrl>
@@ -18,6 +18,7 @@
         <PackageTags>EntityFrameworkCore;Validation;Bulk;EF</PackageTags>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <Title>EF Bulk Validation</Title>
     </PropertyGroup>
 
 </Project>
