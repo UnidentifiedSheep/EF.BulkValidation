@@ -12,10 +12,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="DbValidators\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\BulkValidation.Core\BulkValidation.Core.csproj" />
     </ItemGroup>
 

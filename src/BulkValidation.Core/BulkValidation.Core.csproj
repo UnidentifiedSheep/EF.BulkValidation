@@ -4,6 +4,20 @@
         <TargetFramework>net10.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+
+        <PackageId>EF.BuilkValidation.Core</PackageId>
+        <Version>1.0.0</Version>
+        <Authors>Diyar Tashliyan</Authors>
+        <Description>
+            Batch data validation for Entity Framework Core with single-query execution and a typed API generated via Source Generators.
+        </Description>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/UnidentifiedSheep/EF.BulkValidation</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/UnidentifiedSheep/EF.BulkValidation.git</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageTags>EntityFrameworkCore;Validation;Bulk;EF</PackageTags>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     </PropertyGroup>
 
 </Project>
