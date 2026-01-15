@@ -1,4 +1,5 @@
-﻿using System.Linq.Expressions;
+﻿using System.Collections.Immutable;
+using System.Linq.Expressions;
 using BulkValidation.Core.Abstractions;
 using BulkValidation.Core.Enums;
 using BulkValidation.Core.Interfaces;
@@ -60,7 +61,9 @@ public sealed class KeyValues<TEntity, TKey> : RuleKeyValuePairBase<TEntity>, IH
         Values = value switch
         {
             null => throw new ArgumentException("Value cannot be null for multiple keys."),
-            IEnumerable<TKey?> enumerable => enumerable.ToArray(),
+            TKey?[] array => array,
+            IReadOnlyList<TKey?> list => list,
+            IEnumerable<TKey?> enumerable => [..enumerable],
             _ => throw new ArgumentException(
                 $"Value type '{value.GetType()}' does not match expected type 'IEnumerable<{typeof(TKey)}>'.")
         };
