@@ -10,7 +10,7 @@ public class ExistenceRule<TEntity> : ExistenceRule
     /// </summary>
     /// <param name="kvp">Key/s and value/s</param>
     /// <param name="quantifier">Works only for single key and multiple values.</param>
-    public ExistenceRule(RuleKeyValuePairBase<TEntity> kvp, Quantifier quantifier = Quantifier.Any) : base(kvp)
+    public ExistenceRule(RuleKeyValuePairBase<TEntity> kvp, Quantifier quantifier = Quantifier.All) : base(kvp)
     {
         Quantifier = quantifier;
     }

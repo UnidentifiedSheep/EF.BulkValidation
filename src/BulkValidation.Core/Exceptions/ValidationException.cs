@@ -6,8 +6,8 @@ public class ValidationException : Exception
 {
     public object? Value { get; }
 
-    public ValidationException(ValidationResult result) : base(result.Message)
+    public ValidationException(ValidationFailure failure) : base(failure.Message)
     {
-        Value = result.Value;
+        Value = failure.Value;
     }
 }

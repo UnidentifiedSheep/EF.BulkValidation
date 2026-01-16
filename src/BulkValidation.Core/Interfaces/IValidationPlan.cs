@@ -1,9 +1,10 @@
 ﻿using BulkValidation.Core.Abstractions;
+using BulkValidation.Core.Models;
 
 namespace BulkValidation.Core.Interfaces;
 
 public interface IValidationPlan
 {
-    IReadOnlyList<BaseRule> Build();
-    void Add(BaseRule rule);
+    IReadOnlyList<ValidationPlanItem> Build();
+    void Add(BaseRule rule, string functionEnum);
 }
