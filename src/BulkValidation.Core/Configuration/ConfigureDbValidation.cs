@@ -6,12 +6,12 @@ namespace BulkValidation.Core.Configuration;
 
 public static class ConfigureDbValidation
 {
-    private static readonly ConcurrentDictionary<(Enum, KeyValueType), ValidationConfig> Configs = new();
+    private static readonly ConcurrentDictionary<(string, KeyValueType), ValidationConfig> Configs = new();
 
-    public static void AddConfig(Enum func, KeyValueType kvType, Func<ValidationConfig> configAction)
+    public static void AddConfig(string func, KeyValueType kvType, Func<ValidationConfig> configAction)
         => Configs.GetOrAdd((func, kvType), _ => configAction());
     
-    public static ValidationConfig? GetConfig(Enum func, KeyValueType kvType)
+    public static ValidationConfig? GetConfig(string func, KeyValueType kvType)
         => Configs.GetValueOrDefault((func, kvType));
     
 }

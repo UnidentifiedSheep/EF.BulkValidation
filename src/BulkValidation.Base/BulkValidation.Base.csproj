@@ -6,7 +6,7 @@
         <Nullable>enable</Nullable>
 
         <PackageId>BulkValidation.Base</PackageId>
-        <Version>1.0.0</Version>
+        <Version>1.0.1</Version>
         <Authors>Diyar Tashliyan</Authors>
         <Description>BulkValidation.Base project for Bulk Validation library.
             For full documentation, see the README on GitHub: https://github.com/UnidentifiedSheep/EF.BulkValidation
@@ -21,13 +21,10 @@
         <Title>EF Bulk Validation</Title>
     </PropertyGroup>
 
-    <ItemGroup>
+    <ItemGroup Condition="'$(IsPackable)' == 'true'">
+      <PackageReference Include="BulkValidation.Core" Version="1.0.1" />
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.0" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="10.0.0" />
-    </ItemGroup>
-
-    <ItemGroup Condition="'$(IsPackable)' == 'true'">
-        <PackageReference Include="BulkValidation.Core" Version="1.0.0" />
     </ItemGroup>
     <ItemGroup Condition="'$(IsPackable)' != 'true'">
         <ProjectReference Include="..\BulkValidation.Core\BulkValidation.Core.csproj" />

@@ -6,7 +6,7 @@
         <Nullable>enable</Nullable>
 
         <PackageId>BulkValidation.Pgsql</PackageId>
-        <Version>1.0.0</Version>
+        <Version>1.0.1</Version>
         <Authors>Diyar Tashliyan</Authors>
         <Description>BulkValidation.Pgsql project for Bulk Validation library.
             For full documentation, see the README on GitHub: https://github.com/UnidentifiedSheep/EF.BulkValidation
@@ -28,9 +28,8 @@
     </ItemGroup>
 
     <ItemGroup Condition="'$(IsPackable)' == 'true'">
-        <PackageReference Include="BulkValidation.Base" Version="1.0.0" />
-        <PackageReference Include="BulkValidation.Core" Version="1.0.0" />
+        <PackageReference Include="BulkValidation.Core" Version="1.0.3" />
+        <PackageReference Include="BulkValidation.Base" Version="1.0.1" />
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.0" />
     </ItemGroup>
-
 </Project>

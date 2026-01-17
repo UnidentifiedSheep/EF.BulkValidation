@@ -7,5 +7,5 @@ namespace BulkValidation.Base.Interfaces;
 
 public interface IDbValidator<TContext, TParameter> where TContext : DbContext where TParameter : DbParameter
 {
-    Task<IEnumerable<ValidationResult>> Validate(IValidationPlan plan, bool throwOnError = true, CancellationToken cancellationToken = default);
+    Task<IEnumerable<ValidationFailure>> Validate(IValidationPlan plan, bool throwOnError = true, CancellationToken cancellationToken = default);
 }
