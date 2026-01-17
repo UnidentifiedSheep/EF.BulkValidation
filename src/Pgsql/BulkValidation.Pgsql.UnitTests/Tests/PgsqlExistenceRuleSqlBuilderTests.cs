@@ -1,4 +1,5 @@
 ﻿using System.Linq.Expressions;
+using BulkValidation.Core.Enums;
 using BulkValidation.Core.Interfaces;
 using BulkValidation.Core.Models;
 using BulkValidation.Core.Rules;
@@ -69,17 +70,35 @@ public class PgsqlExistenceRuleSqlBuilderTests
     }
     
     [Fact]
-    public void BuildSql_KeyValues_UsesMetadataResolver()
+    public void BuildSql_KeyValuesAny_UsesMetadataResolver()
     {
         var guid = Guid.NewGuid();
         var otherGuid = Guid.NewGuid();
         var kv = new KeyValues<Dummy, Guid>(x => x.Id);
         kv.WithValue(guid, otherGuid);
-        var rule = new ExistenceRule<Dummy>(kv);
+        var rule = new ExistenceRule<Dummy>(kv, Quantifier.Any);
         
         var sqlCommand = Builder.BuildSql(rule);
         
         Assert.Contains("EXISTS", sqlCommand.Sql);
+        Assert.Contains("@p1", sqlCommand.Sql);
+        Assert.Single(sqlCommand.Parameters);
+        
+        Assert.Equal(new[] { guid, otherGuid }, sqlCommand.Parameters[0].Value);
+        Assert.Equal(NpgsqlDbType.Uuid | NpgsqlDbType.Array, sqlCommand.Parameters[0].NpgsqlDbType);
+    }
+    
+    [Fact]
+    public void BuildSql_KeyValuesAll_UsesMetadataResolver()
+    {
+        var guid = Guid.NewGuid();
+        var otherGuid = Guid.NewGuid();
+        var kv = new KeyValues<Dummy, Guid>(x => x.Id);
+        kv.WithValue(guid, otherGuid);
+        var rule = new ExistenceRule<Dummy>(kv, Quantifier.All);
+        
+        var sqlCommand = Builder.BuildSql(rule);
+        
         Assert.Contains("@p1", sqlCommand.Sql);
         Assert.Single(sqlCommand.Parameters);
         
