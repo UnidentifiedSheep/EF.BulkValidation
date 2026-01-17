@@ -12,7 +12,7 @@
         <RootNamespace>BulkValidation.SourceGeneration</RootNamespace>
 
         <PackageId>BulkValidation.SourceGeneration</PackageId>
-        <Version>1.0.3</Version>
+        <Version>1.0.4</Version>
         <Authors>Diyar Tashliyan</Authors>
         <Description>BulkValidation.SourceGeneration project for Bulk Validation library.
             For full documentation, see the README on GitHub: https://github.com/UnidentifiedSheep/EF.BulkValidation
@@ -37,7 +37,7 @@
     </ItemGroup>
 
     <ItemGroup Condition="'$(IsPackable)' == 'true'">
-        <PackageReference Include="BulkValidation.Core" Version="1.0.4" />
+        <PackageReference Include="BulkValidation.Core" Version="1.0.6" />
     </ItemGroup>
     <ItemGroup Condition="'$(IsPackable)' != 'true'">
         <ProjectReference Include="..\..\BulkValidation.Core\BulkValidation.Core.csproj" />

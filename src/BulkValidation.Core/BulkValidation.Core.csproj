@@ -7,7 +7,7 @@
         <LangVersion>latest</LangVersion>
 
         <PackageId>BulkValidation.Core</PackageId>
-        <Version>1.0.4</Version>
+        <Version>1.0.6</Version>
         <Authors>Diyar Tashliyan</Authors>
         <Description>Batch data validation for Entity Framework Core with single-query execution and a typed API generated via Source Generators.
 For full documentation, see the README on GitHub: https://github.com/UnidentifiedSheep/EF.BulkValidation

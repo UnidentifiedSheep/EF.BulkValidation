@@ -4,10 +4,10 @@ namespace BulkValidation.Core.Exceptions;
 
 public class ValidationException : Exception
 {
-    public object? Value { get; }
+    public IReadOnlyList<ValidationFailure> Failures { get; }
 
-    public ValidationException(ValidationFailure failure) : base(failure.Message)
+    public ValidationException(IEnumerable<ValidationFailure> failures) : base("Validation failed.")
     {
-        Value = failure.Value;
+        Failures = failures.ToList();
     }
 }

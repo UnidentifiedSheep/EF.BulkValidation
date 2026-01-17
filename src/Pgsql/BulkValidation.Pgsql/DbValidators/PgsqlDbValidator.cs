@@ -50,7 +50,7 @@ public class PgsqlDbValidator<TContext> : IDbValidator<TContext, NpgsqlParameter
         }
 
         if (throwOnError && results.Count != 1)
-            throw new ValidationException(results.First());
+            throw new ValidationException(results);
         
         return results;
     }
@@ -63,6 +63,6 @@ public class PgsqlDbValidator<TContext> : IDbValidator<TContext, NpgsqlParameter
         var formattedValue = value.FormatValue();
         var message = config.MessageTemplate.SafeFormat(formattedValue);
 
-        return new ValidationFailure(message, value, config.ErrorType);
+        return new ValidationFailure(message, value, config.ErrorName, config.ErrorType);
     }
 }
