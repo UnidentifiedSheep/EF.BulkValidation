@@ -51,7 +51,24 @@ public partial class User
 }
 ```
 
-### 2. Validation
+### 2. Configuration
+
+Use the `ConfigureDbValidation` class to register validation configs.
+
+```csharp
+public static class Configure
+{
+    public static void Configure()
+    {
+        ConfigureDbValidation.AddConfig(ValidationFunctions.ValidateUserExistsId, KeyValueType.Single, 
+            () => new ValidationConfig("Users not found: {0}"));
+        ConfigureDbValidation.AddConfig(ValidationTupleFunctions.ValidateUserExistsEmailAndPhone, KeyValueType.Tuple,
+            () => new ValidationConfig("Users not found: {0}"));
+    }
+}
+```
+
+### 3. Validation
 
 Use the generated methods to create a validation plan.
 
