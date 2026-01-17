@@ -1,5 +1,4 @@
-﻿using System.Collections.Immutable;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
 using BulkValidation.Core.Abstractions;
 using BulkValidation.Core.Enums;
 using BulkValidation.Core.Interfaces;

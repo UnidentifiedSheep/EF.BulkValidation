@@ -1,12 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net10.0</TargetFramework>
+        <TargetFramework>netstandard2.1</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <LangVersion>latest</LangVersion>
 
         <PackageId>BulkValidation.Core</PackageId>
-        <Version>1.0.3</Version>
+        <Version>1.0.4</Version>
         <Authors>Diyar Tashliyan</Authors>
         <Description>Batch data validation for Entity Framework Core with single-query execution and a typed API generated via Source Generators.
 For full documentation, see the README on GitHub: https://github.com/UnidentifiedSheep/EF.BulkValidation

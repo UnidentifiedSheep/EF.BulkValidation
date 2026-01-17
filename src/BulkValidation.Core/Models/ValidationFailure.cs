@@ -1,6 +1,6 @@
 ﻿namespace BulkValidation.Core.Models;
 
-public record ValidationFailure
+public class ValidationFailure
 {
     public ValidationFailure(string message, object? value, Type? errorType = null)
     {
@@ -9,9 +9,9 @@ public record ValidationFailure
         ErrorType = errorType;
     }
 
-    public string Message { get; init; }
-    public object? Value { get; init; }
-    public Type? ErrorType { get; init; }
+    public string Message { get; }
+    public object? Value { get; }
+    public Type? ErrorType { get; }
 
     public void Deconstruct(out string message, out object? value)
     {
@@ -20,7 +20,7 @@ public record ValidationFailure
     }
 }
 
-public record ValidationFailure<TError> : ValidationFailure
+public class ValidationFailure<TError> : ValidationFailure
 {
     public ValidationFailure(string message, object? value) 
         : base(message, value, typeof(TError))

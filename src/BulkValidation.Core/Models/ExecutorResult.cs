@@ -1,3 +1,12 @@
 ﻿namespace BulkValidation.Core.Models;
 
-public record ExecutorResult<TValue>(string ColumnName, TValue Value);
+public class ExecutorResult<TValue>
+{
+    public TValue Value { get; }
+    public string ColumnName { get; }
+    public ExecutorResult(string columnName, TValue value)
+    {
+        ColumnName = columnName;
+        Value = value;
+    }
+}

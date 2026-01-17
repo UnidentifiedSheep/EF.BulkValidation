@@ -12,7 +12,7 @@
         <RootNamespace>BulkValidation.SourceGeneration</RootNamespace>
 
         <PackageId>BulkValidation.SourceGeneration</PackageId>
-        <Version>1.0.2</Version>
+        <Version>1.0.3</Version>
         <Authors>Diyar Tashliyan</Authors>
         <Description>BulkValidation.SourceGeneration project for Bulk Validation library.
             For full documentation, see the README on GitHub: https://github.com/UnidentifiedSheep/EF.BulkValidation
@@ -34,6 +34,13 @@
         </PackageReference>
         <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.3.0" PrivateAssets="all"/>
         <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="4.3.0" PrivateAssets="all"/>
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(IsPackable)' == 'true'">
+        <PackageReference Include="BulkValidation.Core" Version="1.0.4" />
+    </ItemGroup>
+    <ItemGroup Condition="'$(IsPackable)' != 'true'">
+        <ProjectReference Include="..\..\BulkValidation.Core\BulkValidation.Core.csproj" />
     </ItemGroup>
 
     <Target Name="AddAnalyzerToPackage" AfterTargets="Build">

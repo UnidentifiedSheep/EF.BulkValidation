@@ -4,9 +4,9 @@ namespace BulkValidation.Core.Models;
 
 public record SqlCommand<TParameter> where TParameter : DbParameter
 {
-    public string Sql { get; init; }
-    public string ColumnName { get; init; }
-    public IReadOnlyList<TParameter> Parameters { get; init; }
+    public string Sql { get;}
+    public string ColumnName { get; }
+    public IReadOnlyList<TParameter> Parameters { get; }
     public bool IsSingleParameter => Parameters.Count == 1;
     
     public SqlCommand(string Sql, string ColumnName, params TParameter[] Parameters)
