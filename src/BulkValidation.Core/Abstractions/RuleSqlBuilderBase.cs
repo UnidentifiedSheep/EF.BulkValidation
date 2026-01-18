@@ -29,7 +29,7 @@ public abstract class RuleSqlBuilderBase<TRule, TParameter> : RuleSqlBuilderBase
     protected abstract TParameter CreateParameter(string name, object?[] values, Type type);
 
     protected virtual string GetReturnColumnName(string table, string field, int index)
-        => $"{table}_{field}_{index}";
+        => $"{table}_{field}_{index}".ToLowerInvariant();
 }
 
 public abstract class RuleSqlBuilderBase<TParameter> where TParameter : DbParameter 
