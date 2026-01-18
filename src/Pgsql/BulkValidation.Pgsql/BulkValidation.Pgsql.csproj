@@ -6,7 +6,7 @@
         <Nullable>enable</Nullable>
 
         <PackageId>BulkValidation.Pgsql</PackageId>
-        <Version>1.0.6</Version>
+        <Version>1.0.8</Version>
         <Authors>Diyar Tashliyan</Authors>
         <Description>BulkValidation.Pgsql project for Bulk Validation library.
             For full documentation, see the README on GitHub: https://github.com/UnidentifiedSheep/EF.BulkValidation

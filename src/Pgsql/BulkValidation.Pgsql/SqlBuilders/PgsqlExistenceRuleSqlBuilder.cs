@@ -106,7 +106,7 @@ public class PgsqlExistenceRuleSqlBuilder<TContext>(IMetadataResolver<TContext> 
 
         int sIndex = sharedCounter.GetNextInt();
         var paramName = $"@p{sIndex}";
-        var columnName = GetReturnColumnName(tableName, "manyFields", sharedCounter.GetNextInt());
+        var columnName = GetReturnColumnName(tableName, fieldName, sharedCounter.GetNextInt());
         
         string sql = quantifier switch
         {
