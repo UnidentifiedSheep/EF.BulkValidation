@@ -20,6 +20,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BulkValidation.Pgsql.Benchm
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BulkValidation.Pgsql.UnitTests", "src\Pgsql\BulkValidation.Pgsql.UnitTests\BulkValidation.Pgsql.UnitTests.csproj", "{D924A8AF-931D-40DC-B589-460736291E3A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BulkValidation.Pgsql.IntegrationTests", "src\Pgsql\BulkValidation.Pgsql.IntegrationTests\BulkValidation.Pgsql.IntegrationTests.csproj", "{494BFC87-797D-4892-9F1C-812BA54F46D5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,6 +60,10 @@ Global
 		{D924A8AF-931D-40DC-B589-460736291E3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D924A8AF-931D-40DC-B589-460736291E3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D924A8AF-931D-40DC-B589-460736291E3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{494BFC87-797D-4892-9F1C-812BA54F46D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{494BFC87-797D-4892-9F1C-812BA54F46D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{494BFC87-797D-4892-9F1C-812BA54F46D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{494BFC87-797D-4892-9F1C-812BA54F46D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{F31220E5-253E-4337-8701-2D005C69B3FC} = {554D512B-C8F7-43CC-AF2F-AE20436AA385}
@@ -66,5 +72,6 @@ Global
 		{08D8C954-43B2-4427-8493-D9C0D9285F26} = {3372AD3E-4A44-4CC7-A23B-BD1C5E46C127}
 		{5727F029-2F12-4504-906F-CC8BBF01509C} = {3372AD3E-4A44-4CC7-A23B-BD1C5E46C127}
 		{D924A8AF-931D-40DC-B589-460736291E3A} = {3372AD3E-4A44-4CC7-A23B-BD1C5E46C127}
+		{494BFC87-797D-4892-9F1C-812BA54F46D5} = {3372AD3E-4A44-4CC7-A23B-BD1C5E46C127}
 	EndGlobalSection
 EndGlobal

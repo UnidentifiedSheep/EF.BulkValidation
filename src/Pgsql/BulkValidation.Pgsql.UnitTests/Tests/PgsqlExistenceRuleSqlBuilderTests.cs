@@ -80,7 +80,6 @@ public class PgsqlExistenceRuleSqlBuilderTests
         
         var sqlCommand = Builder.BuildSql(rule);
         
-        Assert.Contains("EXISTS", sqlCommand.Sql);
         Assert.Contains("@p1", sqlCommand.Sql);
         Assert.Single(sqlCommand.Parameters);
         

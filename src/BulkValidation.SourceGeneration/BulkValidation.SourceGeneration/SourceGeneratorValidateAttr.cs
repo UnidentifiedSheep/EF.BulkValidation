@@ -12,12 +12,14 @@ namespace BulkValidation.SourceGeneration;
 [Generator]
 public class SourceGeneratorValidateAttr : IIncrementalGenerator
 {
-    //Depends on ExistenceRule
     private readonly ImmutableArray<(string @namespace, string shortcut, ArgumentMetadata[] additionalArgs)> _baseRules =
-        ImmutableArray.Create(("BulkValidation.Core.Rules.ExistenceRule", "Exists", new []
+        ImmutableArray.CreateRange([("BulkValidation.Core.Rules.ExistenceRule", "Exists", new []
         {
             new ArgumentMetadata("BulkValidation.Core.Enums.Quantifier", "quantifier", "BulkValidation.Core.Enums.Quantifier.All")
-        }));
+        }), ("BulkValidation.Core.Rules.NotExistenceRule", "NotExists", new []
+        {
+            new ArgumentMetadata("BulkValidation.Core.Enums.Quantifier", "quantifier", "BulkValidation.Core.Enums.Quantifier.All")
+        })]);
     
     public void Initialize(IncrementalGeneratorInitializationContext context)
     {

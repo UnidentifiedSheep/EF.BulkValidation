@@ -12,12 +12,14 @@ namespace BulkValidation.SourceGeneration;
 [Generator]
 public class SourceGeneratorValidateTupleAttr : IIncrementalGenerator
 {
-    //Depends on ExistenceRule
     private readonly ImmutableArray<(string @namespace, string shortcut, ArgumentMetadata[] additionalArgs)> _baseRules =
-        ImmutableArray.Create(("BulkValidation.Core.Rules.ExistenceRule", "Exists", new []
+        ImmutableArray.CreateRange([("BulkValidation.Core.Rules.ExistenceRule", "Exists", new []
         {
-            new ArgumentMetadata("BulkValidation.Core.Enums.Quantifier", "quantifier", "BulkValidation.Core.Enums.Quantifier.Any")
-        }));
+            new ArgumentMetadata("BulkValidation.Core.Enums.Quantifier", "quantifier", "BulkValidation.Core.Enums.Quantifier.All")
+        }), ("BulkValidation.Core.Rules.NotExistenceRule", "NotExists", new []
+        {
+            new ArgumentMetadata("BulkValidation.Core.Enums.Quantifier", "quantifier", "BulkValidation.Core.Enums.Quantifier.All")
+        })]);
     
     public void Initialize(IncrementalGeneratorInitializationContext context)
     {
@@ -65,8 +67,7 @@ public class SourceGeneratorValidateTupleAttr : IIncrementalGenerator
             .Select(x => x!)
             .GroupBy(p => new
             {
-                TupleKey = GetValidateTupleKey(p),
-                ContainingType = p.ContainingType
+                TupleKey = GetValidateTupleKey(p), p.ContainingType
             });
 
 

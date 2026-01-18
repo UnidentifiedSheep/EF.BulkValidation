@@ -6,7 +6,6 @@ using BulkValidation.Core.Models;
 using BulkValidation.Pgsql.Abstractions;
 using BulkValidation.Pgsql.DbValidators;
 using BulkValidation.Pgsql.Executors;
-using BulkValidation.Pgsql.Factories;
 using BulkValidation.Pgsql.MetadataResolvers;
 using BulkValidation.Pgsql.SqlBuilders;
 using Microsoft.EntityFrameworkCore;
@@ -17,41 +16,45 @@ namespace BulkValidation.Pgsql.Extensions;
 
 public static class DiExtensions
 {
-    extension(IServiceCollection services)
+    public static IServiceCollection AddPgsqlDbValidators<TContext>(this IServiceCollection services) where TContext : DbContext
     {
-        public IServiceCollection AddPgsqlDbValidators<TContext>() where TContext : DbContext
+        var assembly = Assembly.GetExecutingAssembly();
+
+        services.AddScoped<SharedCounter>();
+
+        services.AddScoped<IMetadataResolver<TContext>, MetadataResolver<TContext>>();
+
+            
+        var builderTypes = assembly
+            .GetTypes()
+            .Where(t => !t.IsAbstract &&
+                        !t.IsInterface &&
+                        t.BaseType != null &&
+                        t.BaseType.IsGenericType &&
+                        t.BaseType.GetGenericTypeDefinition() == typeof(PgsqlRuleSqlBuilderBase<>))
+            .ToList();
+
+        foreach (var type in builderTypes)
         {
-            var assembly = Assembly.GetExecutingAssembly();
-            services.AddScoped<SharedCounter>();
-        
-        
-            //sql builders
-            services.AddSqlBuilders(assembly);
+            var closedType = type.MakeGenericType(typeof(TContext));
+            services.AddScoped(typeof(RuleSqlBuilderBase<NpgsqlParameter>), closedType);
+        }
+
+        var combinedBuilderType = assembly.GetTypes()
+            .FirstOrDefault(t => typeof(CombinedSqlBuilderBase<NpgsqlParameter>).IsAssignableFrom(t));
+
+        if (combinedBuilderType != null)
             services.AddScoped<CombinedSqlBuilderBase<NpgsqlParameter>, PgsqlCombinedSqlBuilder>();
-            services.AddScoped<IRuleSqlBuilderFactory<NpgsqlParameter>, PgsqlRuleSqlBuilderFactory>();
-            
-            //Metadata resolver
-            services.AddScoped<IMetadataResolver<TContext>, MetadataResolver<TContext>>();
-        
-            //Sql executor
-            services.AddScoped<ISqlExecutor<NpgsqlParameter>, PgsqlSqlExecutor<TContext>>();
-            
-            //Db validators
-            services.AddScoped<IDbValidator<TContext, NpgsqlParameter>, PgsqlDbValidator<TContext>>();
-            return services;
-        }
 
-        private void AddSqlBuilders(Assembly assembly)
-        {
-            var builderTypes = assembly
-                .GetTypes()
-                .Where(t => !t.IsAbstract
-                            && t is { IsInterface: false, BaseType.IsGenericType: true }
-                            && t.BaseType.GetGenericTypeDefinition() == typeof(PgsqlRuleSqlBuilderBase<>))
-                .ToList();
+        var factoryType = assembly.GetTypes()
+            .FirstOrDefault(t => typeof(IRuleSqlBuilderFactory<NpgsqlParameter>).IsAssignableFrom(t));
 
-            foreach (var type in builderTypes)
-                services.AddScoped(typeof(RuleSqlBuilderBase<NpgsqlParameter>), type);
-        }
+        if (factoryType != null)
+            services.AddScoped(typeof(IRuleSqlBuilderFactory<NpgsqlParameter>), factoryType);
+
+        services.AddScoped<ISqlExecutor<NpgsqlParameter>, PgsqlSqlExecutor<TContext>>();
+        services.AddScoped<IDbValidator<TContext, NpgsqlParameter>, PgsqlDbValidator<TContext>>();
+
+        return services;
     }
 }

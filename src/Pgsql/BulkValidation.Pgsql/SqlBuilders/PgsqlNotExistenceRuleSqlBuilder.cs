@@ -10,10 +10,10 @@ using Npgsql;
 
 namespace BulkValidation.Pgsql.SqlBuilders;
 
-public class PgsqlExistenceRuleSqlBuilder<TContext>(IMetadataResolver<TContext> metadataResolver, SharedCounter sharedCounter)
-    : PgsqlRuleSqlBuilderBase<ExistenceRule> where TContext : DbContext
+public class PgsqlNotExistenceRuleSqlBuilder<TContext>(IMetadataResolver<TContext> metadataResolver, SharedCounter sharedCounter)
+    : PgsqlRuleSqlBuilderBase<NotExistenceRule> where TContext : DbContext
 {
-    protected override SqlCommand<NpgsqlParameter> BuildSql(ExistenceRule rule)
+    protected override SqlCommand<NpgsqlParameter> BuildSql(NotExistenceRule rule)
     {
         var kvp = rule.RuleKeyValue;
 
@@ -39,7 +39,7 @@ public class PgsqlExistenceRuleSqlBuilder<TContext>(IMetadataResolver<TContext> 
         var columnName = GetReturnColumnName(tableName, fieldName, sIndex);
         
         var sql = $"""
-                   NOT EXISTS (
+                   EXISTS (
                     SELECT 1
                     FROM "{schema}"."{tableName}"
                     WHERE "{fieldName}" = {paramName}
@@ -85,7 +85,7 @@ public class PgsqlExistenceRuleSqlBuilder<TContext>(IMetadataResolver<TContext> 
         var columnName = GetReturnColumnName(tableName, "manyFields", sharedCounter.GetNextInt());
         
         var sql = $"""
-                   NOT EXISTS (
+                   EXISTS (
                     SELECT 1
                     FROM "{schema}"."{tableName}"
                     WHERE {fieldsString} = {paramsString}
@@ -111,20 +111,21 @@ public class PgsqlExistenceRuleSqlBuilder<TContext>(IMetadataResolver<TContext> 
         string sql = quantifier switch
         {
             Quantifier.Any => $"""
-                                (
-                                    SELECT COUNT(DISTINCT t."{fieldName}")
-                                    FROM "{schema}"."{tableName}" t
-                                    WHERE t."{fieldName}" = ANY({paramName})
-                                ) < cardinality({paramName}) AS {columnName}
-                                """,
+                               EXISTS (
+                                   SELECT 1
+                                   FROM "{schema}"."{tableName}"
+                                   WHERE "{fieldName}" = ANY({paramName})
+                                   LIMIT 1
+                               ) AS {columnName}
+                               """,
 
             Quantifier.All => $"""
-                                NOT EXISTS (
-                                    SELECT 1
-                                    FROM "{schema}"."{tableName}"
-                                    WHERE "{fieldName}" = ANY({paramName})
-                                ) AS {columnName}
-                                """,
+                               (
+                                   SELECT COUNT(DISTINCT t."{fieldName}")
+                                   FROM "{schema}"."{tableName}" t
+                                   WHERE t."{fieldName}" = ANY({paramName})
+                               ) = cardinality({paramName}) AS {columnName}
+                               """,
 
             _ => throw new NotSupportedException($"Quantifier {quantifier} is not supported")
         };
