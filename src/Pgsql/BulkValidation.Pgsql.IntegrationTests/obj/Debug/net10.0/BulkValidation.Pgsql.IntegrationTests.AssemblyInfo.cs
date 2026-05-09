@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BulkValidation.Pgsql.IntegrationTests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d63fbff0d531a6c309977985c91f25f1212983a1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2dd068731b6adf2b3bf66e57b6f6915190916b18")]
 [assembly: System.Reflection.AssemblyProductAttribute("BulkValidation.Pgsql.IntegrationTests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BulkValidation.Pgsql.IntegrationTests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

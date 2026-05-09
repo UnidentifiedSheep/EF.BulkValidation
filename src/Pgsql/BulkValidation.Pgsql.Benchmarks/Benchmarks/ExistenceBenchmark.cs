@@ -18,7 +18,6 @@ public class ExistenceBenchmark
     private PgsqlDbValidator<DContext> _dbValidator = null!;
     private int[] _randomInts = null!;
     private Guid[] _randomGuids = null!;
-    private string[] _randomNames = null!;
 
     [GlobalSetup]
     public void Setup()
@@ -39,7 +38,6 @@ public class ExistenceBenchmark
         var rnd = new Random();
         _randomInts = Enumerable.Range(0, 3).Select(_ => rnd.Next(1, 10_000_000)).ToArray();
         _randomGuids = Enumerable.Range(0, 1).Select(_ => Guid.NewGuid()).ToArray();
-        _randomNames = Enumerable.Range(0, 10).Select(_ => Guid.NewGuid().ToString()).ToArray();
     }
 
     [Benchmark]
@@ -68,9 +66,6 @@ public class ExistenceBenchmark
         
         foreach (var value in _randomGuids)
             plan.ValidateRandomDatumExistsGuid(value);
-
-        foreach (var value in _randomNames)
-            plan.ValidateRandomDatumExistsNameValue(value);
         
         await _dbValidator.Validate(plan, false);
     }

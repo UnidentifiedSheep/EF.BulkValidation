@@ -36,9 +36,6 @@ public partial class DContext : DbContext
 
             entity.Property(e => e.First).HasColumnName("first");
             entity.Property(e => e.Second).HasColumnName("second");
-            entity.Property(e => e.Name)
-                .HasConversion(e => e.Value, e => new Name(e))
-                .HasColumnName("name");
             entity.Property(e => e.Guid)
                 .HasDefaultValueSql("gen_random_uuid()")
                 .HasColumnName("guid");
