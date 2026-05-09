@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "kuC5Ap1V888=",
+  "dgSpecHash": "heUVnI0rZxY=",
   "success": true,
   "projectFilePath": "C:\\Users\\owl\\RiderProjects\\EF.BulkValidation\\src\\Pgsql\\BulkValidation.Pgsql.IntegrationTests\\BulkValidation.Pgsql.IntegrationTests.csproj",
   "expectedPackageFiles": [
@@ -32,8 +32,6 @@
     "C:\\Users\\owl\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\10.0.0\\npgsql.entityframeworkcore.postgresql.10.0.0.nupkg.sha512",
     "C:\\Users\\owl\\.nuget\\packages\\sharpziplib\\1.4.2\\sharpziplib.1.4.2.nupkg.sha512",
     "C:\\Users\\owl\\.nuget\\packages\\ssh.net\\2025.1.0\\ssh.net.2025.1.0.nupkg.sha512",
-    "C:\\Users\\owl\\.nuget\\packages\\system.collections.immutable\\8.0.0\\system.collections.immutable.8.0.0.nupkg.sha512",
-    "C:\\Users\\owl\\.nuget\\packages\\system.reflection.metadata\\8.0.0\\system.reflection.metadata.8.0.0.nupkg.sha512",
     "C:\\Users\\owl\\.nuget\\packages\\testcontainers\\4.9.0\\testcontainers.4.9.0.nupkg.sha512",
     "C:\\Users\\owl\\.nuget\\packages\\testcontainers.postgresql\\4.9.0\\testcontainers.postgresql.4.9.0.nupkg.sha512",
     "C:\\Users\\owl\\.nuget\\packages\\xunit\\2.9.3\\xunit.2.9.3.nupkg.sha512",
@@ -43,7 +41,7 @@
     "C:\\Users\\owl\\.nuget\\packages\\xunit.core\\2.9.3\\xunit.core.2.9.3.nupkg.sha512",
     "C:\\Users\\owl\\.nuget\\packages\\xunit.extensibility.core\\2.9.3\\xunit.extensibility.core.2.9.3.nupkg.sha512",
     "C:\\Users\\owl\\.nuget\\packages\\xunit.extensibility.execution\\2.9.3\\xunit.extensibility.execution.2.9.3.nupkg.sha512",
-    "C:\\Users\\owl\\.nuget\\packages\\xunit.runner.visualstudio\\3.1.4\\xunit.runner.visualstudio.3.1.4.nupkg.sha512"
+    "C:\\Users\\owl\\.nuget\\packages\\xunit.runner.visualstudio\\4.0.0-pre.4\\xunit.runner.visualstudio.4.0.0-pre.4.nupkg.sha512"
   ],
   "logs": []
 }
